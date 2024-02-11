@@ -1,0 +1,70 @@
+---
+import GitHub from "./icons/GitHub.astro"
+import Link from "./icons/Link.astro"
+import LinkButton from "./LinkButton.astro"
+
+
+const PROJECTS = [
+  {
+    title: "Ric And Morty",
+    description:
+    "En este proyecto, utilice el desarrollo de una Wiki de Rick and Morty utilizando la API de rickandmortyapi.com. El propósito principal fue practicar la integracion de API'S y mejorar mis habilidades en React.js, además de familiarizarme con el uso de Bootstrap, Sass y React Hooks.",
+    link: "google.com",
+    github: "https://github.com/StivenYepesArenas/react/tree/main/projects/Ric-And-Morty-Api",
+    image: "/projects/api.png",
+    
+  },
+  {
+    title: "Chat en tiempo real-en desarrollo-Muy pronto",
+    description:
+      "Gran proyecto de chat en tiempo real con Node.js, Socket.io, HTML y CSS.",
+    link: "google.com",
+    github:"https://github.com/StivenYepesArenas/Chat-Real-Time",
+    image: "/projects/chat.png ",
+   
+  },
+]
+---
+
+<div class="flex flex-col gap-y-16">
+  {
+    PROJECTS.map(({ image, title, description,  link, github }) => (
+    <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+  <div class="w-full md:w-1/2">
+    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+      <img alt="screnshots" class=" object-top" loading="lazy" src={image} />
+    </div>
+  </div>
+
+  <div class="w-full md:w-1/2 md:max-w-lg">
+    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+      {title}
+    </h3>
+    <div class="flex flex-wrap mt-2">
+      
+
+      <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
+      <footer class="flex items-end justify-start mt-4 gap-x-4">
+          {github && (
+            <LinkButton href={github}>
+              <GitHub class="size-6" />
+              Code
+              
+            </LinkButton>
+          )}
+          {link && (
+            <LinkButton href={link}>
+              <Link class="size-4" />
+              Preview
+            </LinkButton>
+          )}
+        </footer>
+    </div>
+  </div>
+</article>
+    ))
+  }
+</div>
+
+
+
